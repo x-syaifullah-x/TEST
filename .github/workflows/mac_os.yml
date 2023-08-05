@@ -1,0 +1,24 @@
+name: MAC_OS
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  check:
+    # runs-on: macos-latest
+    runs-on: macos-13
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Mac version
+        run: |
+          sw_vers
+
+      - name: Mac CPU
+        run: |
+          sysctl -a | grep machdep.cpu
+
+      - name: Mac memory
+        run: |
+          top -l 1 -s 0 | grep PhysMem
