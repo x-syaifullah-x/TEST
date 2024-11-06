@@ -31,7 +31,7 @@ jobs:
       - name: Install kvm
         run: |
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager emulator
-          emulator -accel-check
+          $ANDROID_HOME/emulator/emulator -accel-check
 
   # setup_java:
   #   runs-on: ubuntu-latest
