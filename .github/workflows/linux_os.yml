@@ -24,7 +24,7 @@ jobs:
           free -mw
       - name: Install kvm
         run: |
-          apt install qemu-kvm -y
+          sudo apt install qemu-kvm -y
           kvm
 
   # setup_java:
