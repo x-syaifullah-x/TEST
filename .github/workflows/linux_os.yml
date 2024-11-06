@@ -33,6 +33,10 @@ jobs:
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager emulator
           $ANDROID_HOME/emulator/emulator -accel-check
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86_64"
+          cat << EOF >> ~/.android/advancedFeatures.ini
+          Vulkan = off
+          GLDirectMem = on
+          EOF
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd -n test -k "system-images;android-30;google_apis;x86_64" -d "17"
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager platform-tools
           sudo apt-get install libpulse0 -y
@@ -48,9 +52,6 @@ jobs:
           done
 
           adb shell input keyevent 82
-          adb setprop debug.hwui.renderer skiagl
-          adb stop
-          adb start
           adb shell free -m
           
   # setup_java:
