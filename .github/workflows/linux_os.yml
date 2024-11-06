@@ -32,7 +32,8 @@ jobs:
         run: |
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager emulator
           $ANDROID_HOME/emulator/emulator -accel-check
-
+          
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd -n pixel -k "system-images;android-26;google_apis;x86_64" -d "17"
   # setup_java:
   #   runs-on: ubuntu-latest
   #   steps:
