@@ -33,8 +33,8 @@ jobs:
           sudo sudo apt install mesa-vulkan-drivers -y
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager emulator
           $ANDROID_HOME/emulator/emulator -accel-check
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86_64"
-          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd -n test -k "system-images;android-30;google_apis;x86_64" -d "17"
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-29;google_apis;x86_64"
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd -n test -k "system-images;android-29;google_apis;x86_64" -d "17"
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager platform-tools
           sudo apt-get install libpulse0 -y
           $ANDROID_HOME/emulator/emulator -avd test -no-metrics -grpc -noaudio -gpu swiftshader_indirect -no-window &
