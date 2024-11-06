@@ -30,7 +30,7 @@ jobs:
       
       - name: Install kvm
         run: |
-          emulator -accel-check
+          echo $ANDROID_HOME
 
   # setup_java:
   #   runs-on: ubuntu-latest
