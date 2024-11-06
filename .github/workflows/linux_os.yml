@@ -37,6 +37,7 @@ jobs:
           Vulkan = off
           GLDirectMem = on
           EOF
+          cat ~/.android/advancedFeatures.ini
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd -n test -k "system-images;android-30;google_apis;x86_64" -d "17"
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager platform-tools
           sudo apt-get install libpulse0 -y
