@@ -22,6 +22,10 @@ jobs:
       - name: Linux memory
         run: |
           free -mw
+      - name: Install kvm
+        run: |
+          apt install qemu-kvm -y
+          kvm
 
   # setup_java:
   #   runs-on: ubuntu-latest
