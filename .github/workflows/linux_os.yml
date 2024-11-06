@@ -36,7 +36,19 @@ jobs:
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd -n test -k "system-images;android-30;google_apis;x86_64" -d "17"
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager platform-tools
           sudo apt-get install libpulse0 -y
-          $ANDROID_HOME/emulator/emulator -avd test -no-metrics -noaudio -gpu host -no-window
+          $ANDROID_HOME/emulator/emulator -avd test -no-metrics -noaudio -gpu swiftshader_indirect -no-window &
+          adb wait-for-device
+
+          A=$(adb shell getprop sys.boot_completed | tr -d '\r')
+
+          while [ "$A" != "1" ]; do
+            sleep 2
+            A=$(adb shell getprop sys.boot_completed | tr -d '\r')
+          done
+
+          adb shell input keyevent 82
+          adb shell free -m
+          
   # setup_java:
   #   runs-on: ubuntu-latest
   #   steps:
