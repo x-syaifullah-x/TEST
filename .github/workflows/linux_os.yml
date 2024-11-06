@@ -35,7 +35,7 @@ jobs:
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86_64"
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd -n test -k "system-images;android-30;google_apis;x86_64" -d "17"
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager platform-tools
-          $ANDROID_HOME/emulator/emulator -avd test
+          $ANDROID_HOME/emulator/emulator -avd test -noaudio
   # setup_java:
   #   runs-on: ubuntu-latest
   #   steps:
