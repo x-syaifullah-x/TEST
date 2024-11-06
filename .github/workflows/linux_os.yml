@@ -37,6 +37,7 @@ jobs:
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager platform-tools
           sudo apt-get install libpulse0 -y
           $ANDROID_HOME/emulator/emulator -avd test -no-metrics -noaudio -gpu swiftshader_indirect -no-window &
+          export PATH=$PATH:$ANDROID_HOME/platform-tools
           adb wait-for-device
 
           A=$(adb shell getprop sys.boot_completed | tr -d '\r')
