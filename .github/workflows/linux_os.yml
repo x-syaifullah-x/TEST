@@ -30,6 +30,7 @@ jobs:
       
       - name: Install kvm
         run: |
+          sudo sudo apt install mesa-vulkan-drivers -y
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager emulator
           $ANDROID_HOME/emulator/emulator -accel-check
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86_64"
