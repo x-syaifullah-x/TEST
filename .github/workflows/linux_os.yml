@@ -97,4 +97,4 @@ jobs:
       
       - name: Linux version
         run: |
-          sudo dmesg
+          dmesg
