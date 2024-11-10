@@ -97,4 +97,4 @@ jobs:
       
       - name: Linux version
         run: |
-          free -mw
+          mount -v tmpfs -t tmpfs /mnt/test --mkdir
