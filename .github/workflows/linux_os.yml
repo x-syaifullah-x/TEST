@@ -84,3 +84,17 @@ jobs:
       #     [ ! -d $FLUTTER_ROOT ] && mkdir -p $FLUTTER_ROOT
       #     tar xf flutter_linux_3.10.6-stable.tar.xz && rm -rf flutter_linux_3.10.6-stable.tar.xz
       #     echo $FLUTTER_ROOT/bin >> $GITHUB_PATH
+
+  docker:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    container:
+      image: debian:bookworm
+      options: --privileged
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Linux version
+        run: |
+          sudo dmesg
