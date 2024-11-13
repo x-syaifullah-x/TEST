@@ -1,0 +1,17 @@
+name: LINUX_OS_TEST_DOCKER
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: download docker
+        run: |
+          apt update
+          apt install docker.io
