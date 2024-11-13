@@ -14,7 +14,7 @@ jobs:
       - name: download docker
         run: |
           docker pull debian:bookworm
-          docker create --name x-000 --privileged -v $(pwd):/xxx -e INCLUDE_PACKAGE=apt-utils,bash-completion,locales,whiptail --entrypoint "tail" debian:bookworm "-f" "/dev/null"
+          docker create --name x-000 --privileged -v $(pwd):/xxx -e "INCLUDE_PACKAGE=apt-utils,bash-completion,locales,whiptail" --entrypoint "tail" debian:bookworm "-f" "/dev/null"
 
       - name: exec
         run: |
