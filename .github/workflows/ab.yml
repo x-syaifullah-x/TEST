@@ -20,3 +20,5 @@ jobs:
         run: |
            docker start x-000
            docker exec x-000 ls -la
+           docker exec mount -t tmpfs tmpfs /mnt/test --mkdir
+           docker exec mount | grep /mnt
