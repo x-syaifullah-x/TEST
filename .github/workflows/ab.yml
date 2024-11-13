@@ -20,5 +20,6 @@ jobs:
         run: |
            c_name=x-000
            docker start $c_name
-           docker exec $c_name mkdir -p /xxx/abc
-           ls -A
+           docker exec $c_name mkdir -p /xxx/rootfs
+           docker exec $c_name apt update
+           docker exec $c_name apt install debootstrap -y
