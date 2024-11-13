@@ -24,4 +24,4 @@ jobs:
            docker exec $c_name apt update
            docker exec $c_name apt install debootstrap -y
            docker exec $c_name debootstrap --variant=minbase --arch amd64 --include=apt-utils,bash-completion,locales,whiptail bookworm /xxx/rootfs http://deb.debian.org/debian
-           docker exec $c_name ls -la
+           ls -la rootfs
