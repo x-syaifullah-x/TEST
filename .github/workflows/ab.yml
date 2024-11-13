@@ -13,5 +13,6 @@ jobs:
 
       - name: download docker
         run: |
-          docker images
+          docker pull debian:bookworm
+          docker run -it debian:bookworm
           
