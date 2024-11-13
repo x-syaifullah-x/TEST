@@ -18,4 +18,5 @@ jobs:
 
       - name: exec
         run: |
+           docker start x-000
            docker exec x-000 ls -la
