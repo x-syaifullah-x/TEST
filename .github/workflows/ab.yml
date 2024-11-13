@@ -14,7 +14,7 @@ jobs:
       - name: download docker
         run: |
           docker pull debian:bookworm
-          docker create --name x-000 --privileged -v $(pwd):/xxx -e "INCLUDE_PACKAGE=apt-utils,bash-completion,locales,whiptail" --entrypoint "tail" debian:bookworm "-f" "/dev/null"
+          docker create --name x-000 --privileged -e "INCLUDE_PACKAGE=apt-utils,bash-completion,locales,whiptail" -v $(pwd):/xxx --entrypoint "tail" debian:bookworm "-f" "/dev/null"
 
       - name: exec
         run: |
@@ -23,4 +23,4 @@ jobs:
            docker exec $c_name mkdir -p /xxx/rootfs
            docker exec $c_name apt update
            docker exec $c_name apt install debootstrap -y
-           docker exec $c_name -e ABC=100 echo $ABC
+           docker exec $c_name env
