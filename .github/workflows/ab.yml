@@ -23,3 +23,5 @@ jobs:
            docker exec $c_name mkdir -p /xxx/rootfs
            docker exec $c_name apt update
            docker exec $c_name apt install debootstrap -y
+           docker exec $c_name export INCLUDE_PACKAGE=apt-utils,bash-completion,locales,whiptail
+           docker exec $c_name echo $INCLUDE_PACKAGE
