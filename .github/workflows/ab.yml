@@ -14,12 +14,11 @@ jobs:
       - name: download docker
         run: |
           docker pull debian:bookworm
-          docker create --name x-000 --privileged --entrypoint "tail" debian:bookworm "-f" "/dev/null"
+          docker create --name x-000 --privileged -v $(pwd):/xxx --entrypoint "tail" debian:bookworm "-f" "/dev/null"
 
       - name: exec
         run: |
            c_name=x-000
            docker start $c_name
-           alias d_exec="$(docker exec $c_name)"
-           d_exec ls -la
-           d_exec mount -t tmpfs tmpfs /mnt/test --mkdir
+           docker exec $c_name mkdir -p /xxx/abc
+           ls -A
