@@ -23,4 +23,4 @@ jobs:
            docker exec $c_name mkdir -p /xxx/rootfs
            docker exec $c_name apt update
            docker exec $c_name apt install debootstrap -y
-           docker exec $c_name echo $INCLUDE_PACKAGE
+           docker exec $c_name -e ABC=100 echo $ABC
