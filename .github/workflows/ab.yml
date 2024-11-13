@@ -24,4 +24,16 @@ jobs:
            docker exec $c_name apt update
            docker exec $c_name apt install debootstrap -y
            docker exec $c_name debootstrap --variant=minbase --arch amd64 --include=apt-utils,bash-completion,locales,whiptail bookworm /xxx/rootfs http://deb.debian.org/debian
-           ls -la rootfs
+           sudo chroot rootfs /bin/bash <<"EOF_CHROOT"
+           # SETUP LOCALES
+           echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+           dpkg-reconfigure --frontend=noninteractive locales
+           update-locale LANG=en_US.UTF-8
+          
+           # REINSTALL ALL PACKAGE
+           export DEBIAN_FRONTEND=noninteractive
+           apt update
+           packages=$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')
+           apt install --no-install-recommends --no-install-suggests --reinstall $packages -y
+           EOF_CHROOT
+           # CHROOT END
