@@ -18,7 +18,8 @@ jobs:
 
       - name: exec
         run: |
-           docker start x-000
-           docker exec x-000 ls -la
-           docker exec x-000 mount -t tmpfs tmpfs /mnt/test --mkdir
-           docker exec x-000 mount | grep /mnt
+           c_name=x-000
+           docker start $c_name
+           d_exec=$(docker exec $c_name)
+           d_exec ls -la
+           d_exec mount -t tmpfs tmpfs /mnt/test --mkdir
