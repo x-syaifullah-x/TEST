@@ -20,6 +20,6 @@ jobs:
         run: |
            c_name=x-000
            docker start $c_name
-           d_exec=$(docker exec $c_name)
+           alias d_exec="$(docker exec $c_name)"
            d_exec ls -la
            d_exec mount -t tmpfs tmpfs /mnt/test --mkdir
