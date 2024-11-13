@@ -13,5 +13,5 @@ jobs:
 
       - name: download docker
         run: |
+          docker images
           
-          docker --version
