@@ -23,4 +23,5 @@ jobs:
            docker exec $c_name mkdir -p /xxx/rootfs
            docker exec $c_name apt update
            docker exec $c_name apt install debootstrap -y
-           docker exec $c_name env
+           docker exec $c_name debootstrap --variant=minbase --arch X86_64 --include=$INCLUDE_PACKAGE bookworm /xxx/rootfs http://deb.debian.org/debian
+           docker exec $c_name ls -la rootfs
