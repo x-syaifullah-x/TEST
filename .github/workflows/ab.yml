@@ -23,7 +23,7 @@ jobs:
            docker exec $c_name mkdir -p /xxx/rootfs
            docker exec $c_name apt update
            docker exec $c_name apt install debootstrap -y
-           docker exec $c_name debootstrap --variant=minbase --arch amd64 --exclude=e2fsprogs,sysvinit-utils,ncurses-base,ncurses-bin,gpgv --include=apt-utils,bash-completion,locales,whiptail bookworm /xxx/rootfs http://deb.debian.org/debian
+           docker exec $c_name debootstrap --variant=minbase --arch amd64 --exclude=e2fsprogs,sysvinit-utils,ncurses-base,ncurses-bin --include=apt-utils,bash-completion,locales,whiptail bookworm /xxx/rootfs http://deb.debian.org/debian
            sudo chroot rootfs /bin/bash <<"EOF_CHROOT"
            # SETUP LOCALES
            echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
